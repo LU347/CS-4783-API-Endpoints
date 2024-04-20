@@ -1,25 +1,45 @@
 <!DOCTYPE html>
-<html>
-<head>
-<title>Welcome to nginx!</title>
-<style>
-    body {
-        width: 35em;
-        margin: 0 auto;
-        font-family: Tahoma, Verdana, Arial, sans-serif;
-    }
-</style>
-</head>
-<body>
-<h1>Welcome to nginx!</h1>
-<p>If you see this page, the nginx web server is successfully installed and
-working. Further configuration is required.</p>
-
-<p>For online documentation and support please refer to
-<a href="http://nginx.org/">nginx.org</a>.<br/>
-Commercial support is available at
-<a href="http://nginx.com/">nginx.com</a>.</p>
-
-<p><em>Thank you for using nginx.</em></p>
-</body>
+    <head>
+        <title></title>
+        <link rel="stylesheet" href="/assets/css/index.css">
+    </head>
+    <body>
+        <nav>
+            <ul class="navbar">
+                <li><a href="">Home</a></li>
+                <li><a href="search.html">Search Equipment</a></li>
+                <li><a href="add.html">Add Equipment</a></li>
+				<li><a href="update.html">Update Equipment</a></li>
+            </ul>
+        </nav>
+        <main>
+            <section class="home-page">
+                <div class="parent">
+                    <div class="home-grid">
+                        <div class="card">
+                            <h3>Search Equipment</h3>
+                            <p><em>Search equipment by their device type, manufacturer, or serial number</em></p>
+                            <a href="search.html">
+								<button name="search-button">Go to Search Page</button>
+							</a>
+                        </div>
+                        <div class="card">
+                            <h3>Add Equipment</h3>
+                            <p><em>Add equipment with a valid device type, manufacturer, and serial number</em></p>
+                            <a href="add.html">
+								<button name="add-button">Go to Add Page</button>
+							</a>
+                        </div>
+						<div class="card">
+                            <h3>Update Equipment</h3>
+                            <p><em>Update equipment with a valid device type, manufacturer, and serial number</em></p>
+                            <a href="update.html">
+								<button name="update-button">Go to Update Page</button>
+							</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </body>
 </html>

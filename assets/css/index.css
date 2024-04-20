@@ -1,0 +1,227 @@
+/* CSS Document */
+
+@import url('https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/*
+Color Pallette
+https://coolors.co/palette/cad2c5-84a98c-52796f-354f52-2f3e46 
+*/
+
+html {
+    max-width: 100%;
+    background-color: #CAD2C5;
+    font-family: "Reddit Mono", monospace;
+	height: 100%;
+	color: white;
+	
+	/*background-color: #CAD2C5;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='148' height='148' viewBox='0 0 200 200'%3E%3Cpolygon fill='%2352796F' fill-opacity='0.11' points='100 0 0 100 100 100 100 200 200 100 200 0'/%3E%3C/svg%3E");
+    */
+    background-color: #dbdbdb;
+    background-image: radial-gradient(rgba(73, 72, 72, 0.171) 2px, transparent 0);
+    background-size: 30px 30px;
+    background-position: -5px -5px
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background-color: #212121;
+	margin-bottom: 10px;
+	box-shadow: 0 0.5em 1em 0 rgba(0,0,0,.2);
+}
+
+nav ul {
+    list-style-type: none;
+    overflow: hidden;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    display: inline-block;
+}
+
+nav a {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+nav li a:hover {
+    background-color: #171c2f;
+}
+
+h1 {
+	margin: 1px;
+	padding: 0.5rem;
+	border-radius: 1rem;
+	color: white;
+	font-size: 2rem;/* From https://css.glass */
+	/* From https://css.glass */
+	background: rgba(2, 2, 2, 0.59);
+	border-radius: 16px;
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(7.3px);
+	-webkit-backdrop-filter: blur(7.3px);
+	border: 1px solid rgba(2, 2, 2, 1);
+}
+
+.active-link {
+    background-color: #52796F;
+}
+
+.parent {
+	margin: auto;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form * {
+    margin: 1rem;
+}
+
+form label {
+    font-size: 1.5rem;
+}
+
+form select, input[type=text]{
+    width: 100%;
+    height: 1.875rem;
+}
+
+form input[type=submit] {
+    width: 25%;
+    height: 2em;
+}
+
+.form-container {
+	width: 75%;
+	height: 100%;
+	padding: 3.125rem;
+	border-radius: 2rem;
+	background-color: rgba(45, 45, 45, 0.702);
+	border: 1px solid rgba(2, 2, 2, 1);
+}
+
+.new-form-container {
+	width: 100%;
+	margin: 0;
+	display: grid;
+	grid-template-columns: auto auto;
+	column-gap: 5%;
+}
+
+.home-grid {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 10%;
+	row-gap: 10%;
+}
+
+.update-home-grid {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 2.5%;
+	row-gap: 10%;
+}
+
+.update-home-page {
+	display: flex;
+	justify-content: center;
+}
+
+#deviceForms {
+	display: grid;
+	grid-template-columns: auto auto;
+	column-gap: 5%;
+}
+
+.new-device-manu {
+	margin-top: 25px;
+	padding: 3.125rem;
+	background: rgba(2, 2, 2, 0.59);
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(7.3px);
+	-webkit-backdrop-filter: blur(7.3px);
+	border: 1px solid rgba(2, 2, 2, 1);
+	height: auto;
+}
+
+.new-device-manu-grid {
+	display: grid;
+	grid-template-columns: auto auto;
+	column-gap: 5%;
+}
+
+.search-grid {
+	display: grid;
+	grid-template-columns: 45% 45%;
+	column-gap: 2.5%;
+	margin: 1.5rem;
+	justify-content: center;
+}
+
+.search-parent {
+	display: flex;
+	justify-content: center;
+}
+
+.search-results-container {
+	width: 90%;
+	height: auto;
+	background-color: rgba(45, 45, 45, 0.702);
+	margin: 20px;
+	display: flex;
+	align-content:center;
+	justify-content: center;
+}
+
+ .container {
+	width: 100%;
+}
+
+.scroll {
+	height: 50%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: justify;
+	width: 90%;
+}
+
+.card {
+    border-radius: 10px;
+    padding: 2em;
+    width: 16rem;
+	background-color: rgba(45, 45, 45, 0.702);
+}
+
+.successNotification {
+	border: 1px solid rgb(121, 193, 146);
+    background-color: rgb(240, 253, 244);
+    border-radius: 5px;
+    color: rgb(21, 128, 61);
+    width: 25%;
+    text-align: center; 
+}
+
+.errorNotification {
+    background-color: #FCE8DB;
+	border: 1px solid #EF665B;
+    border-radius: 5px;
+    color: #F94A3C;
+    width: 31.25rem;
+    text-align: center; 
+}
+
+.home-page {
+	margin-top: 50px;
+}
