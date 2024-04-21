@@ -16,6 +16,11 @@
 			<section class="update-home-page">
 				<div class="parent">
                     <div class="update-home-grid">
+						<div class="card">
+                            <h3>Update Equipment</h3>
+                            <p><em>Update existing equipment with a valid device, manufacturer, status, and serial number</em></p>
+                            <button name="update-serial" onclick="location.href='update_equipment.html'">Click to Update Equipment</button>
+                        </div>
                         <div class="card">
                             <h3>Update Device</h3>
                             <p><em>Update an existing device type or device status</em></p>
@@ -38,11 +43,11 @@
 				<div class="new-device-manu-grid">
 					<div class="new-form-container">
 						<form method="POST" action="">
-							<label for="devices">Select Device:</label>
+							<label for="devices">Select Device Name:</label>
 							<select name="device_id">
 									<option selected disabled>Choose Here</option>
 							</select>
-							<label for="device-input">Update Device to:</label>
+							<label for="device-input">Update Device Name:</label>
 							<input type="text" name="updated_str" placeholder="Example: Computer"><br>
 							<button type="submit" value="submit_update_device" name="submit_update_device">Update Device</button>
 						</form>

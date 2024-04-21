@@ -170,6 +170,12 @@ form input[type=submit] {
 	justify-content: center;
 }
 
+.update-equipment-grid {
+	display: grid;
+	grid-template-columns: auto auto;
+	column-gap: 5%;
+}
+
 .search-parent {
 	display: flex;
 	justify-content: center;
@@ -185,7 +191,10 @@ form input[type=submit] {
 	justify-content: center;
 }
 
- .container {
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	width: 100%;
 }
 
@@ -202,6 +211,7 @@ form input[type=submit] {
     padding: 2em;
     width: 16rem;
 	background-color: rgba(45, 45, 45, 0.702);
+	border: 1px solid rgba(2, 2, 2, 1);
 }
 
 .successNotification {
