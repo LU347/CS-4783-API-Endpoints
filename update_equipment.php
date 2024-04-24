@@ -6,10 +6,10 @@
     <body>
         <nav>
             <ul class="navbar">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="search.html">Search Equipment</a></li>
-                <li><a href="add.html">Add Equipment</a></li>
-				<li><a href="update.html">Update Equipment</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="search.php">Search Equipment</a></li>
+                <li><a href="add.php">Add Equipment</a></li>
+				<li><a href="update.php">Update Equipment</a></li>
             </ul>
         </nav>
         <main>
@@ -31,7 +31,7 @@
 									<option selected disabled>Choose Here</option>
 								</select>
 								<label for="serial_number">Serial Number:</label><br>
-								<input type="text" name="serial_number" placeholder="Format: SN-xxxxx..">
+								<input type="text" name="serial_number" id="serialInput" placeholder="Format: SN-xxxxx..">
 								<button type="submit" value="submit-search" name="submit-search">Search</button>
 							</form>
 						</div>

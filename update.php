@@ -6,9 +6,9 @@
     <body>
         <nav>
             <ul class="navbar">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="search.html">Search Equipment</a></li>
-                <li><a href="add.html">Add Equipment</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="search.php">Search Equipment</a></li>
+                <li><a href="add.php">Add Equipment</a></li>
 				<li><a href="">Update Equipment</a></li>
             </ul>
         </nav>
@@ -19,7 +19,7 @@
 						<div class="card">
                             <h3>Update Equipment</h3>
                             <p><em>Update existing equipment with a valid device, manufacturer, status, and serial number</em></p>
-                            <button name="update-serial" onclick="location.href='update_equipment.html'">Click to Update Equipment</button>
+                            <button name="update-serial" onclick="location.href='update_equipment.php'">Click to Update Equipment</button>
                         </div>
                         <div class="card">
                             <h3>Update Device</h3>
@@ -101,9 +101,9 @@
 				<div class="new-form-container">
 					<form method="POST" action="">
 						<label for="serial-input">Input Serial Number (exact):</label>
-						<input type="text" name="serial_number" placeholder="Example: SN-XXXXX"><br>
+						<input type="text" name="serial_number" id="serialInput" placeholder="Example: SN-XXXXX"><br>
 						<label for="device-input">Update Serial Number (exact) to:</label>
-						<input type="text" name="updated_str" placeholder="Example: SN-XXXX"><br>
+						<input type="text" name="updated_str" id="serialInput" placeholder="Example: SN-XXXX"><br>
 						<button type="submit" value="submit_new_serial" name="submit_new_serial">Submit</button>
 					</form>
 					

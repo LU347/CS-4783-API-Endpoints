@@ -29,7 +29,7 @@ body {
 }
 
 nav {
-    background-color: #212121;
+    background-color: #181b2b;
 	margin-bottom: 10px;
 	box-shadow: 0 0.5em 1em 0 rgba(0,0,0,.2);
 }
@@ -65,7 +65,7 @@ h1 {
 	color: white;
 	font-size: 2rem;/* From https://css.glass */
 	/* From https://css.glass */
-	background: rgba(2, 2, 2, 0.59);
+	background: rgba(22, 26, 45, 0.7);
 	border-radius: 16px;
 	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 	backdrop-filter: blur(7.3px);
@@ -108,7 +108,7 @@ form input[type=submit] {
 	height: 100%;
 	padding: 3.125rem;
 	border-radius: 2rem;
-	background-color: rgba(45, 45, 45, 0.702);
+	background-color: rgba(22, 26, 45, 0.7);
 	border: 1px solid rgba(2, 2, 2, 1);
 }
 
@@ -148,7 +148,7 @@ form input[type=submit] {
 .new-device-manu {
 	margin-top: 25px;
 	padding: 3.125rem;
-	background: rgba(2, 2, 2, 0.59);
+	background: rgba(22, 26, 45, 0.7);
 	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 	backdrop-filter: blur(7.3px);
 	-webkit-backdrop-filter: blur(7.3px);
@@ -210,7 +210,7 @@ form input[type=submit] {
     border-radius: 10px;
     padding: 2em;
     width: 16rem;
-	background-color: rgba(45, 45, 45, 0.702);
+	background-color: rgba(22, 26, 45, 0.7);
 	border: 1px solid rgba(2, 2, 2, 1);
 }
 
@@ -235,3 +235,12 @@ form input[type=submit] {
 .home-page {
 	margin-top: 50px;
 }
+
+#serialInput {
+	text-transform: uppercase;
+}
+
+#deviceInput, #manufacturerInput{
+	text-transform: capitalize;
+}
+
