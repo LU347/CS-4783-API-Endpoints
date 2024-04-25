@@ -148,4 +148,58 @@ if (isset($_POST['submit']))
     }
 
 }
+
+if (isset($_POST['submit_new_device']))
+{
+    $device_type = trim($_POST['device_type']);
+	$encoded_device = urlencode($device_type);
+    $url = "https://ec2-18-220-186-80.us-east-2.compute.amazonaws.com/api/add_device?device_type=" . $encoded_device; //TODO: Replace with $encoded_device
+    $result = call_api($url);
+    $resultsArray = json_decode($result, true);
+
+    $status = get_msg_status($resultsArray);
+    $msg = substr($resultsArray[1], 4); //this should get the msg: line (if it's not json)
+
+    if (strcmp($status, "Success") == 0) 
+    {
+		$encoded_msg = urlencode("DeviceAdded");
+        header("Location: index.php?msg=$encoded_msg"); // change to device added
+        die();
+    }
+
+    if (strcmp($status, "ERROR") == 0) 
+    {
+		$encoded_msg = urlencode($msg);
+        header("Location: add.php?msg=Error&val=$encoded_msg");
+        die();
+    }
+}
+
+if (isset($_POST['submit_new_manufacturer']))
+{
+    $new_manufacturer = trim($_POST['new_manufacturer']);
+	$encoded_manufacturer = urlencode($new_manufacturer);
+    $url = "https://ec2-18-220-186-80.us-east-2.compute.amazonaws.com/api/add_manufacturer?manufacturer=" . $encoded_manufacturer;
+
+    $result = call_api($url);
+    $resultsArray = json_decode($result, true);
+
+    $status = get_msg_status($resultsArray);
+    $msg = substr($resultsArray[1], 4); //this should get the msg: line (if it's not json)
+
+    if (strcmp($status, "Success") == 0) 
+    {
+		$encoded_msg = urlencode("ManufacturerAdded");
+        header("Location: index.php?msg=$encoded_msg"); // change to device added
+        die();
+    }
+	
+    if (strcmp($status, "ERROR") == 0) 
+    {
+        $encoded_msg = urlencode($msg);
+        header("Location: add.php?msg=Error&val=$encoded_msg");
+        die();
+    }
+}
 ?>
+
