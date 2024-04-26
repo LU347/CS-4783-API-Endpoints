@@ -4,14 +4,7 @@
         <link rel="stylesheet" href="/assets/css/index.css">
     </head>
     <body>
-        <nav>
-            <ul class="navbar">
-                <li><a href="index.php">Home</a></li>
-                <li><a href="search.php">Search Equipment</a></li>
-                <li><a href="add.php">Add Equipment</a></li>
-				<li><a href="">Update Equipment</a></li>
-            </ul>
-        </nav>
+       <?php include("header.php"); ?>
         <main>
 			<section class="update-home-page">
 				<div class="parent">
@@ -42,7 +35,7 @@
 			<section class="new-device-manu" id="deviceForms" style="display: none">
 				<div class="new-device-manu-grid">
 					<div class="new-form-container">
-						<form method="POST" action="">
+						<form method="POST" class="form" action="">
 							<label for="devices">Select Device Name:</label>
 							<select name="device_id">
 									<option selected disabled>Choose Here</option>
@@ -54,7 +47,7 @@
 						
 					</div>
 					<div class="new-form-container">
-						<form method="POST" action="">
+						<form method="POST" class="form" action="">
 							<label for="devices">Select Device:</label>
 							<select name="device_id">
 									<option selected disabled>Choose Here</option>
@@ -72,7 +65,7 @@
 			<section class="new-device-manu" id="manuForms" style="display: none">
 				<div class="new-device-manu-grid">
 					<div class="new-form-container">
-						<form method="POST" action="">
+						<form method="POST" class="form" action="">
 							<label for="manufacturers">Select Manufacturer:</label>
 							<select name="manufacturer_id">
 									<option selected disabled>Choose Here</option>
@@ -83,7 +76,7 @@
 						</form>
 					</div>
 					<div class="new-form-container">
-						<form method="POST" action="">
+						<form method="POST" class="form" action="">
 							<label for="manufacturers">Select Manufacturer:</label>
 							<select name="manufacturer_id">
 									<option selected disabled>Choose Here</option>
@@ -99,7 +92,7 @@
 			</section>
 			<section class="new-device-manu" id="serialForms" style="display: none">
 				<div class="new-form-container">
-					<form method="POST" action="">
+					<form method="POST" class="form" action="">
 						<label for="serial-input">Input Serial Number (exact):</label>
 						<input type="text" name="serial_number" id="serialInput" placeholder="Example: SN-XXXXX"><br>
 						<label for="device-input">Update Serial Number (exact) to:</label>

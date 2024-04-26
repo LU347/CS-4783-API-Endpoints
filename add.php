@@ -4,14 +4,7 @@
         <link rel="stylesheet" href="/assets/css/index.css">
     </head>
     <body>
-        <nav>
-            <ul class="navbar">
-                <li><a href="index.php">Home</a></li>
-                <li><a href="search.php">Search Equipment</a></li>
-                <li><a href="">Add Equipment</a></li>
-				<li><a href="update.php">Update Equipment</a></li>
-            </ul>
-        </nav>
+        <?php include("header.php"); ?>
         <main>
             <section class="add-device">
                 <div class="parent">
@@ -30,7 +23,7 @@
                       $manufacturers = get_msg_data($resultsArray);
                     ?>
 					<div class="form-container">
-						<form method="POST" action="">
+						<form method="POST" class="form" action="">
 							<label for="devices">Device Type:</label>
 							<select name="device_id">
 								<option selected disabled>Choose Here</option>
@@ -57,14 +50,11 @@
 							<input type="text" id="serialInput" name="serial_number" placeholder="Format: SN-090912309asd"><br>
 							<button type="submit" value="submit" name="submit">Submit Equipment</button>
 						</form>
+						<div class="parent">
+							<button onclick="toggleNewForms()">Click Here to Add a New Device or Manufacturer</button>
+						</div>
 					</div>
                 </div>
-				<div class="parent">
-					<div class="new-device-manu-grid">
-						<em>Need to add a new device or manufacturer?</em>
-						<button onclick="toggleNewForms()">Click Here to Add a New Device or Manufacturer</button>
-					</div>
-				</div>
             </section>
 			<section class="new-device-manu" id="newForms" style="display: none">
 				<div class="new-form-container">
