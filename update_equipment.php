@@ -28,7 +28,7 @@
 				<div class="parent">
 					  <?php
 						ob_start();
-						include(".functions.php");
+						include("functions.php");
 						$result = call_api("https://ec2-18-220-186-80.us-east-2.compute.amazonaws.com/api/list_devices");
 						$resultsArray = json_decode($result, true);
 						$devices = get_msg_data($resultsArray);

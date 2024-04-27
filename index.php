@@ -7,34 +7,44 @@
         <?php include("header.php"); ?>
         <main>
             <section class="home-page">
-				<?php
-				  if (isset($_REQUEST['msg']) && $_REQUEST['msg'] == "DeviceUpdated")
-				  {
-					  echo "<div class='parent'><div class='successNotification'><p>Device successfully updated!</div></div>";
-				  }
-				  if (isset($_REQUEST['msg']) && $_REQUEST['msg'] == "ManufacturerUpdated")
-				  {
-					  echo "<div class='parent'><div class='successNotification'><p>Manufacturer successfully updated!</div></div>";
-				  }
-				  if (isset($_REQUEST['msg']) && $_REQUEST['msg'] == "SerialUpdated")
-				  {
-					  echo "<div class='parent'><div class='successNotification'><p>Serial Number successfully updated!</div></div>";
-				  }
-				
-                  if (isset($_REQUEST['msg']) && $_REQUEST['msg'] == "EquipmentAdded")
-				  {
-					  echo "<div class='parent'><div class='successNotification'><p>Equipment successfully added!</div></div>";
-				  }
-				
-                  if (isset($_REQUEST['msg']) && $_REQUEST['msg'] == "DeviceAdded")
-				  {
-					  echo "<div class='parent'><div class='successNotification'><p>Device successfully added!</div></div>";
-				  }
-				  
-			      if (isset($_REQUEST['msg']) && $_REQUEST['msg'] == "ManufacturerAdded")
-				  {
-					  echo "<div class='parent'><div class='successNotification'><p>Manufacturer successfully added!</div></div>";
-				  }
+				<?php					
+		 			if (isset($_REQUEST['msg']))
+					{
+						$success_msg = "";
+						
+						switch($_REQUEST['msg']) {
+							case "DeviceUpdated":
+								$success_msg = "Device successfully updated!";
+								break;
+							case "ManufacturerUpdated":
+								$success_msg = "Manufacturer successfully updated!";
+								break;
+							case "SerialUpdated":
+								$success_msg = "Serial Number successfully updated!";
+								break;
+							case "EquipmentUpdated":
+								$success_msg = "Equipment successfully updated!";
+								break;
+							case "DeviceAdded":
+								$success_msg = "Device successfully added!";
+								break;
+							case "ManufacturerAdded":
+								$success_msg = "Manufacturer successfully added!";
+								break;
+							case "EquipmentAdded":
+								$success_msg = "Equipment successfully added!";
+								break;
+							default:
+								break;
+						}
+						
+						echo "
+						<div class='parent'>
+							<div class='successNotification'>
+								<p>$success_msg</p>
+							</div>
+						</div>";
+					}
 				 ?>
                 <div class="parent">
                     <div class="home-grid">
