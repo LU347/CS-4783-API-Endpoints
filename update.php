@@ -6,6 +6,17 @@
     <body>
        <?php include("header.php"); ?>
         <main>
+			<?php
+			ob_start();
+			include( "functions.php" );
+			$result = call_api( "https://ec2-18-220-186-80.us-east-2.compute.amazonaws.com/api/list_devices" );
+			$resultsArray = json_decode( $result, true );
+			$devices = get_msg_data( $resultsArray );
+
+			$result = call_api( "https://ec2-18-220-186-80.us-east-2.compute.amazonaws.com/api/list_manufacturers" );
+			$resultsArray = json_decode( $result, true );
+			$manufacturers = get_msg_data( $resultsArray );
+			?>
 			<section class="update-home-page">
 				<div class="parent">
                     <div class="update-home-grid">
@@ -36,29 +47,25 @@
 				<div class="new-device-manu-grid">
 					<div class="new-form-container">
 						<form method="POST" class="form" action="">
-							<label for="devices">Select Device Name:</label>
-							<select name="device_id">
-									<option selected disabled>Choose Here</option>
-							</select>
-							<label for="device-input">Update Device Name:</label>
-							<input type="text" name="updated_str" placeholder="Example: Computer"><br>
-							<button type="submit" value="submit_update_device" name="submit_update_device">Update Device</button>
-						</form>
-						
-					</div>
-					<div class="new-form-container">
-						<form method="POST" class="form" action="">
 							<label for="devices">Select Device:</label>
 							<select name="device_id">
 									<option selected disabled>Choose Here</option>
+									<?php
+									foreach($devices as $key=>$value)
+									{
+										echo '<option value="'.$key.'">'.$value.'</option>';
+									}
+									?>
 							</select>
-							<label for="device-input">Update Device Status:</label>
-							<select name="new_device_status">
-								<option selected disabled>Choose Here</option>
+							<label for="device-input">New Device Name:</label>
+							<input type="text" name="updated_str" placeholder="Example: Computer"><br>
+							<label for="device-status">Device Status</label>
+							<select name="device-status">
+								<option value="ACTIVE">ACTIVE</option>
+								<option value="INACTIVE">INACTIVE</option>
 							</select>
-							<button type="submit" value="submit_device_status" name="submit_device_status">Update Status</button>
+							<button type="submit" value="submit_update_device" name="update_device">Update Device</button>
 						</form>
-						
 					</div>
 				</div>
 			</section>
@@ -69,23 +76,21 @@
 							<label for="manufacturers">Select Manufacturer:</label>
 							<select name="manufacturer_id">
 									<option selected disabled>Choose Here</option>
+									<?php
+									foreach($manufacturers as $key=>$value)
+									{
+										echo '<option value="'.$key.'">'.$value.'</option>';
+									}
+									?>
 							</select>
 							<label for="manufacturer-input">Update Manufacturer to:</label>
 							<input type="text" name="updated_str" placeholder="Example: Apple"><br>
-							<button type="submit" value="submit_update_manufacturer" name="submit_update_manufacturer">Update Manufacturer</button>
-						</form>
-					</div>
-					<div class="new-form-container">
-						<form method="POST" class="form" action="">
-							<label for="manufacturers">Select Manufacturer:</label>
-							<select name="manufacturer_id">
-									<option selected disabled>Choose Here</option>
+							<label for="manufacturer-status">Manufacturer Status</label>
+							<select name="manufacturer-status">
+								<option value="ACTIVE">ACTIVE</option>
+								<option value="INACTIVE">INACTIVE</option>
 							</select>
-							<label for="manufacturer-input">Update Manufacturer Status:</label>
-							<select name="manufacturer_status">
-								<option selected disabled>Choose Here</option>
-							</select>
-							<button type="submit" value="submit_manufacturer_status" name="submit_manufacturer_status">Update Status</button>
+							<button type="submit" value="submit_update_manufacturer" name="update_manufacturer">Update Manufacturer</button>
 						</form>
 					</div>
 				</div>
@@ -97,7 +102,7 @@
 						<input type="text" name="serial_number" id="serialInput" placeholder="Example: SN-XXXXX"><br>
 						<label for="device-input">Update Serial Number (exact) to:</label>
 						<input type="text" name="updated_str" id="serialInput" placeholder="Example: SN-XXXX"><br>
-						<button type="submit" value="submit_new_serial" name="submit_new_serial">Submit</button>
+						<button type="submit" value="submit_new_serial" name="update_serial">Submit</button>
 					</form>
 					
 				</div>
@@ -119,14 +124,16 @@
             {
               let div = document.getElementById("deviceForms");
               if (div.style.display === "none") {
-                  div.style.display = "block";
+                  div.style.display = "flex";
+				  div.style.justifyContent = "center";
               } else {
                   div.style.display = "none";
               }
             } else if (buttonName == "update-manufacturer") {
               let div = document.getElementById("manuForms");
               if (div.style.display === "none") {
-                  div.style.display = "block";
+                  div.style.display = "flex";
+				  div.style.justifyContent = "center";
               } else {
                   div.style.display = "none";
               }
