@@ -37,42 +37,45 @@ function get_data($msg)
   return json_decode( $payload_Data[1], true);
 }
 
-function display_results($result)
+function display_search_results($result) 
 {
-    $resultArray = json_decode($result, true);
-    $status = get_msg_status($resultArray);
+    $resultArray = json_decode( $result, true );
+    $status = get_msg_status( $resultArray );
 
-    if (strcmp($status, "Success") == 0) {
-        $data = get_data($resultArray);
-		$num_results = count($data);
-		
-		echo "<table class='view-table' style='overflow-x:auto;'>
-            <tr>
-              <th>DEVICE TYPE</th>
-              <th>MANUFACTURER</th>
-              <th>SERIAL NUMBER</th>
-            </tr>";
+    if ( strcmp( $status, "Success" ) == 0 ) 
+    {
+      $data = get_data( $resultArray );
+      $num_results = count( $data );
 
-		for ($i = 0; $i < $num_results; $i++) {
-			$row = explode(",", $data[$i]);
-			echo "<tr>";
-			for ($j = 0; $j < 3; $j++) {
-				echo "<td>";
-				echo $row[$j];
-				echo "</td>";
-			}
-			echo "</tr>";
-		}
-		
-		echo "</table>";
+      echo "<table class='view-table' style='overflow-x:auto;'>
+                <tr>
+                  <th>STATUS</th>
+                  <th>DEVICE TYPE</th>
+                  <th>MANUFACTURER</th>
+                  <th>SERIAL NUMBER</th>
+                </tr>";
+
+      for ( $i = 0; $i < $num_results; $i++ ) {
+        $row = explode( ",", $data[ $i ] );
+        echo "<tr>";
+        for ( $j = 0; $j < 4; $j++ ) {
+          echo "<td>";
+          echo $row[ $j ];
+          echo "</td>";
+        }
+        echo "</tr>";
+       }
+      echo "</table>";
     }
 
-    if (strcmp($status, "ERROR") == 0) {
-        $msg = explode("MSG:", $resultArray[1]);
-		echo "<div class=parent>";
-        echo "<h2>$msg[1]</h2>";
-		echo "</div>";
-
+    if ( strcmp( $status, "ERROR" ) == 0 ) 
+    {
+      $msg = explode( "MSG:", $resultArray[ 1 ] );
+      echo "<div class='parent'>";
+      echo "<div class='errorNotification'><p>";
+      echo $msg[1];
+      echo "</p></div>";
+      echo "</div>";
     }
 }
 ?>

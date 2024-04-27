@@ -235,10 +235,6 @@ h1 {
 	margin-top: 50px;
 }
 
-#serialInput {
-	text-transform: uppercase;
-}
-
 #deviceInput, #manufacturerInput{
 	text-transform: capitalize;
 }

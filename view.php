@@ -18,14 +18,14 @@
                     $resultsArray = json_decode($result, true);
                     $manufacturers = get_msg_data($resultsArray);
 				?>
-				<div class="parent"><h1>View Equipment</h1></div>
-				<div class="parent" id="singleEquipment">
+				<div class="parent"><h1>View and Search Equipment</h1></div>
+				<div class="parent">
 					<form method="POST" class="search-bar" action="">
 						<label for="status">Status:</label>
 						<select name="status">
-							<option value="active">ACTIVE</option>
-							<option value="inactive">INACTIVE</option>
-							<option value="both">ACTIVE/INACTIVE</option>
+							<option value="ACTIVE">ACTIVE</option>
+							<option value="INACTIVE">INACTIVE</option>
+							<option value="BOTH">ACTIVE/INACTIVE</option>
 						</select>
 						<label for="device">Device:</label>
 						<select name="device_id">
@@ -47,43 +47,53 @@
                               }
                             ?>
 						</select>
-						<label for="serial">Serial #:</label>
+						<label for="serial_number">Serial #:</label>
 						<input type="text" id="serialInput" name="serial_number" placeholder="Format: SN-09091asda309asd">
-						<button type="submit" value="submit" name="submit-equipment">View Equipment</button>
-					</form>
-				</div>
-				<div class="parent" id="allEquipment">
-					<form method="POST" class="search-bar" action="">
-						<label for="status">Status:</label>
-						<select name="status">
-							<option value="active">ACTIVE</option>
-							<option value="inactive">INACTIVE</option>
-							<option value="both">ACTIVE/INACTIVE</option>
-						</select>
-						<button type="submit" value="submit-all" name="submit-all">View All Equipment</button>
+						<button type="submit" name="submit-equipment">View Equipment</button>
 					</form>
 				</div>
             </section>
 			<section class="results">
 				<div class="parent">
 					<?php
-						ob_start();
-						if (isset($_POST['submit-equipment'])) 
-						{
-							  $manufacturer_id = $_REQUEST['manufacturer_id'];
-							  $device_id = $_REQUEST['device_id'];
-							  $serial_number = $_REQUEST['serial_number'];
-							  $url = "https://ec2-18-220-186-80.us-east-2.compute.amazonaws.com/api/search_equipment?search_by=all&manufacturer_id=" . $manufacturer_id . "&device_id=" . $device_id . "&serial_number=" . $serial_number;
-							$result = call_api($url);
-							  display_results($result);
-						}
-					
-						if (isset($_POST['submit-all']))
-						{
-							$url = "https://ec2-18-220-186-80.us-east-2.compute.amazonaws.com/api/list_all_equipment";
-							$result = call_api($url);
-							display_results($result);
-						}
+					ob_start();
+					if ( isset( $_POST[ 'submit-equipment' ] ) ) {
+					  $status = $_REQUEST[ 'status' ];
+					  $manufacturer_id = $_REQUEST[ 'manufacturer_id' ];
+					  $device_id = $_REQUEST[ 'device_id' ];
+					  $serial_number = $_REQUEST[ 'serial_number' ];
+					  $url = "https://ec2-18-220-186-80.us-east-2.compute.amazonaws.com/api/new_search?status=$status";
+					  
+					  if ($device_id && (!$manufacturer_id && !$serial_number))
+					  {
+						  $url = "https://ec2-18-220-186-80.us-east-2.compute.amazonaws.com/api/new_search?status=$status&device_id=$device_id";
+					  }
+						
+                      if ($manufacturer_id && (!$device_id && !$serial_number))
+					  {
+						  $url = "https://ec2-18-220-186-80.us-east-2.compute.amazonaws.com/api/new_search?status=$status&manufacturer_id=$manufacturer_id";
+					  }
+						
+					  if ($serial_number && (!$device_id && !$manufacturer_id))
+					  {
+						  $encoded_serial = urlencode($serial_number);
+						  $url = "https://ec2-18-220-186-80.us-east-2.compute.amazonaws.com/api/new_search?status=$status&serial_number=$encoded_serial";
+					  }
+						
+					  if ($device_id && $manufacturer_id && $serial_number) {
+						  $url = "https://ec2-18-220-186-80.us-east-2.compute.amazonaws.com/api/new_search?status=$status&serial_number=$serial_number&device_id=$device_id&manufacturer_id=$manufacturer_id";
+					  }
+				
+					  $result = call_api( $url );
+					  display_search_results($result);
+					}
+					 
+
+					if ( isset( $_POST[ 'submit-all' ] ) ) {
+					  $url = "https://ec2-18-220-186-80.us-east-2.compute.amazonaws.com/api/list_all_equipment";
+					  $result = call_api( $url );
+					  //display_results( $result );
+					}
 					?>
 				</div>
 			</section>

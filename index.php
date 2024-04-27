@@ -49,9 +49,9 @@
                 <div class="parent">
                     <div class="home-grid">
                         <div class="card">
-                            <h3>Search Equipment</h3>
-                            <p><em>Search equipment by their device type, manufacturer, or serial number</em></p>
-                            <a href="search.php">
+                            <h3>View Search Equipment</h3>
+                            <p><em>Search equipment by their device type, manufacturer, or serial number, or status</em></p>
+                            <a href="view.php">
 								<button name="search-button">Go to Search Page</button>
 							</a>
                         </div>
