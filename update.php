@@ -60,7 +60,8 @@
 							<label for="device-input">New Device Name:</label>
 							<input type="text" name="updated_str" placeholder="Example: Computer"><br>
 							<label for="device-status">Device Status</label>
-							<select name="device-status">
+							<select name="status">
+								<option selected disabled>Choose Here</option>
 								<option value="ACTIVE">ACTIVE</option>
 								<option value="INACTIVE">INACTIVE</option>
 							</select>
@@ -86,7 +87,8 @@
 							<label for="manufacturer-input">Update Manufacturer to:</label>
 							<input type="text" name="updated_str" placeholder="Example: Apple"><br>
 							<label for="manufacturer-status">Manufacturer Status</label>
-							<select name="manufacturer-status">
+							<select name="status">
+								<option selected disabled>Choose Here</option>
 								<option value="ACTIVE">ACTIVE</option>
 								<option value="INACTIVE">INACTIVE</option>
 							</select>
@@ -109,6 +111,17 @@
 			</section>
 			<section class="status-notifications">
 				<div class="parent">
+					<?php
+						ob_start();					
+						if (isset($_REQUEST['msg']) && $_REQUEST['msg'] == "Error" && $_REQUEST['val'])
+						{
+							echo "<div class='parent'>";
+							echo "<div class='errorNotification'><p>";
+							echo $_REQUEST['val'];
+							echo "</p></div>";
+							echo "</div>";
+						}
+					?>
 				</div>
 			</section>
 		</main>
@@ -148,3 +161,60 @@
 		}
 	</script>
 </html>
+<?php
+ob_start();
+if (isset($_POST['update_device'])) 
+{
+	$device_id = $_POST['device_id'];
+	$updated_str = $_POST['updated_str'];
+	$status = $_POST['status'];
+	
+	$url = "https://ec2-18-220-186-80.us-east-2.compute.amazonaws.com/api/new_update_device?"
+		. "device_id=" . $device_id . "&updated_str=" . urlencode($updated_str) . "&status=" . $status;
+	$result = call_api($url);
+	$resultsArray = json_decode($result, true);
+    $status = trim(get_msg_status($resultsArray));
+	$msg = substr($resultsArray[1], 4);
+	
+	if (strcmp($status, "Success") == 0) 
+    {
+        header("Location: index.php?msg=DeviceUpdated"); // change to device added
+        die();
+    }
+
+    if (strcmp($status, "ERROR") == 0) 
+    {
+        header("Location: update.php?msg=Error&val=$msg");
+        die();
+    }
+}
+?>
+<?php
+ob_start();
+if (isset($_POST['update_manufacturer']))
+{
+	$manufacturer_id = $_POST['manufacturer_id'];
+	$updated_str = $_POST['updated_str'];
+	$status = $_POST['status'];
+	
+	$url = "https://ec2-18-220-186-80.us-east-2.compute.amazonaws.com/api/new_update_manufacturer?"
+		. "manufacturer_id=" . $manufacturer_id . "&updated_str=" . urlencode($updated_str) . "&status=" . $status;
+
+	$result = call_api($url);
+	$resultsArray = json_decode($result, true);
+    $status = trim(get_msg_status($resultsArray));
+	$msg = substr($resultsArray[1], 4);
+	
+	if (strcmp($status, "Success") == 0) 
+    {
+        header("Location: index.php?msg=ManufacturerUpdated"); // change to device added
+        die();
+    }
+
+    if (strcmp($status, "ERROR") == 0) 
+    {
+        header("Location: update.php?msg=Error&val=$msg");
+        die();
+    }
+}
+?>

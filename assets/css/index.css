@@ -239,6 +239,11 @@ h1 {
 	text-transform: capitalize;
 }
 
+table {
+	table-layout: fixed;
+	border: 1px solid;
+}
+
 .view-table {
 	width: 75%;
 	display: flex;
@@ -254,6 +259,9 @@ h1 {
 	padding: 1rem;
 	text-align: center;
 	color: black;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	word-wrap: break-word;
 }
 
 .search-bar {

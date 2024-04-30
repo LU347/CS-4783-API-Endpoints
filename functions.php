@@ -47,9 +47,10 @@ function display_search_results($result)
       $data = get_data( $resultArray );
       $num_results = count( $data );
 
-      echo "<table class='view-table' style='overflow-x:auto;'>
+      echo "<table class='view-table' style='border:1px solid; width:90%'>
                 <tr>
-                  <th>STATUS</th>
+                  <th>MANUFACTURER STATUS</th>
+				  <th>DEVICE STATUS</th>
                   <th>DEVICE TYPE</th>
                   <th>MANUFACTURER</th>
                   <th>SERIAL NUMBER</th>
@@ -58,10 +59,21 @@ function display_search_results($result)
       for ( $i = 0; $i < $num_results; $i++ ) {
         $row = explode( ",", $data[ $i ] );
         echo "<tr>";
-        for ( $j = 0; $j < 4; $j++ ) {
-          echo "<td>";
-          echo $row[ $j ];
-          echo "</td>";
+        for ( $j = 0; $j < 5; $j++ ) {
+			if (strcmp($row[$j], "ACTIVE") === 0)
+			{
+				echo "<td style='color:green'>";
+				echo $row[ $j ];
+          		echo "</td>";
+			} elseif (strcmp($row[$j], "INACTIVE") === 0) {
+				echo "<td style='color:red'>";
+				echo $row[ $j ];
+          		echo "</td>";
+			} else {
+				echo "<td>";
+				echo $row[ $j ];
+          		echo "</td>";
+			}
         }
         echo "</tr>";
        }
