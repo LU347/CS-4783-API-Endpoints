@@ -80,6 +80,11 @@
 						  $url = "https://ec2-18-220-186-80.us-east-2.compute.amazonaws.com/api/new_search?status=$status&serial_number=$encoded_serial";
 					  }
 						
+					  if ($device_id && $manufacturer_id && (!$serial_number))
+					  {
+						  $url = "https://ec2-18-220-186-80.us-east-2.compute.amazonaws.com/api/new_search?status=$status&device_id=$device_id&manufacturer_id=$manufacturer_id";
+					  }
+						
 					  if ($device_id && $manufacturer_id && $serial_number) {
 						  $url = "https://ec2-18-220-186-80.us-east-2.compute.amazonaws.com/api/new_search?status=$status&serial_number=$serial_number&device_id=$device_id&manufacturer_id=$manufacturer_id";
 					  }
