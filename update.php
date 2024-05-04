@@ -9,13 +9,13 @@
 			<?php
 			ob_start();
 			include( "functions.php" );
-			$result = call_api( "https://ec2-18-220-186-80.us-east-2.compute.amazonaws.com/api/list_devices" );
+			$result = call_api( "https://ec2-18-220-186-80.us-east-2.compute.amazonaws.com/api/list_devices?status=both" );
 			$resultsArray = json_decode( $result, true );
 			$devices = get_msg_data( $resultsArray );
 
-			$result = call_api( "https://ec2-18-220-186-80.us-east-2.compute.amazonaws.com/api/list_manufacturers" );
-			$resultsArray = json_decode( $result, true );
-			$manufacturers = get_msg_data( $resultsArray );
+			$manu_result = call_api( "https://ec2-18-220-186-80.us-east-2.compute.amazonaws.com/api/list_manufacturers?status=both" );
+			$manu_array = json_decode( $manu_result, true );
+			$manufacturers = get_msg_data( $manu_array );
 			?>
 			<section class="update-home-page">
 				<div class="parent">
@@ -27,12 +27,12 @@
                         </div>
                         <div class="card">
                             <h3>Update Device</h3>
-                            <p><em>Update an existing device type or device status</em></p>
+                            <p><em>Update an existing device type or device status (all devices are shown)</em></p>
                             <button name="update-device" onclick="toggleNewForms()">Click to Update Device</button>
                         </div>
                         <div class="card">
                             <h3>Update Manufacturer</h3>
-                            <p><em>Update an existing manufacturer</em></p>
+                            <p><em>Update an existing manufacturer (all manufacturers are shown)</em></p>
                             <button name="update-manufacturer" onclick="toggleNewForms()">Click to Update Manufacturer</button>
                         </div>
 						<div class="card">

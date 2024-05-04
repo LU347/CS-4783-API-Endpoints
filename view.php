@@ -92,13 +92,6 @@
 					  $result = call_api( $url );
 					  display_search_results($result);
 					}
-					 
-
-					if ( isset( $_POST[ 'submit-all' ] ) ) {
-					  $url = "https://ec2-18-220-186-80.us-east-2.compute.amazonaws.com/api/list_all_equipment";
-					  $result = call_api( $url );
-					  //display_results( $result );
-					}
 					?>
 				</div>
 			</section>
