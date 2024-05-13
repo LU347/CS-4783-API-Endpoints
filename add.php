@@ -12,48 +12,48 @@
 				</div>
                 <div class="parent">
                     <?php
-				      ob_start();
-					  include_once("functions.php");
-                      $result = call_api("https://ec2-18-220-186-80.us-east-2.compute.amazonaws.com/api/list_devices");
-                      $resultsArray = json_decode($result, true);
-                      $devices = get_msg_data($resultsArray);
+			ob_start();
+			include_once("functions.php");
+                        $result = call_api("https://ec2-18-220-186-80.us-east-2.compute.amazonaws.com/api/list_devices");
+                        $resultsArray = json_decode($result, true);
+                        $devices = get_msg_data($resultsArray);
 						
-                      $result = call_api("https://ec2-18-220-186-80.us-east-2.compute.amazonaws.com/api/list_manufacturers");
-                      $resultsArray = json_decode($result, true);
-                      $manufacturers = get_msg_data($resultsArray);
+                        $result = call_api("https://ec2-18-220-186-80.us-east-2.compute.amazonaws.com/api/list_manufacturers");
+                        $resultsArray = json_decode($result, true);
+                        $manufacturers = get_msg_data($resultsArray);
                     ?>
-					<div class="form-container">
-						<form method="POST" class="form" action="">
-							<label for="devices">Device Type:</label>
-							<select name="device_id">
-								<option selected disabled>Choose Here</option>
-								<?php
-									foreach($devices as $key=>$value)
-									{
-										echo '<option value="'.$key.'">'.$value.'</option>';
+			<div class="form-container">
+				<form method="POST" class="form" action="">
+					<label for="devices">Device Type:</label>
+					<select name="device_id">
+						<option selected disabled>Choose Here</option>
+						<?php
+						   foreach($devices as $key=>$value)
+						   {
+							echo '<option value="'.$key.'">'.$value.'</option>';
 									}
-								?>
-							</select>
+						?>
+					</select>
 
-							<label for="manufacturer">Manufacturer:</label>
-							<select name="manufacturer_id">
-								<option selected disabled>Choose Here</option>
-								<?php
-									foreach($manufacturers as $key=>$value)
-									{
-										echo '<option value="'.$key.'">'.$value.'</option>';
+					<label for="manufacturer">Manufacturer:</label>
+					<select name="manufacturer_id">
+						<option selected disabled>Choose Here</option>
+						<?php
+						   foreach($manufacturers as $key=>$value)
+						   {
+							echo '<option value="'.$key.'">'.$value.'</option>';
 									}
-								?>
-							</select>
+						?>
+					</select>
 							
-							<label for="serialNumber">Serial Number:</label>
-							<input type="text" id="serialInput" name="serial_number" placeholder="Format: SN-090912309asd"><br>
-							<button type="submit" value="submit" name="submit">Submit Equipment</button>
-						</form>
-						<div class="parent">
-							<button onclick="toggleNewForms()">Click Here to Add a New Device or Manufacturer</button>
-						</div>
-					</div>
+					<label for="serialNumber">Serial Number:</label>
+					<input type="text" id="serialInput" name="serial_number" placeholder="Format: SN-090912309asd"><br>
+					<button type="submit" value="submit" name="submit">Submit Equipment</button>
+				</form>
+				<div class="parent">
+					<button onclick="toggleNewForms()">Click Here to Add a New Device or Manufacturer</button>
+				</div>
+			</div>
                 </div>
             </section>
 			<section class="new-device-manu" id="newForms" style="display: none">
